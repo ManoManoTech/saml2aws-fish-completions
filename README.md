@@ -1,13 +1,12 @@
 # saml2aws-fish-completions
 
-> Provide basic Fish completion
-
+> Provides basic Fish completion for saml2aws
 
 ![preview](preview.gif)
 
 ## Installation
 
-    fisher install edouard-lopez/saml2aws-fish-completions
+    fisher install ManoManoTech/saml2aws-fish-completions
 
 :warning: Subcommand only expose global options, specific options need to be added (help welcome :)
 
