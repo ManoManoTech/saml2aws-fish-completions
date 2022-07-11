@@ -2,6 +2,9 @@
 
 > Provide basic Fish completion
 
+
+![preview](preview.gif)
+
 ## Installation
 
     fisher install edouard-lopez/saml2aws-fish-completions
