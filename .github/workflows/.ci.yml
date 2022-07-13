@@ -1,0 +1,28 @@
+name: Run tests on CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  test-without-container:
+    name: Test without container
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Fish
+        run: apt install fish
+      - name: Print Fish version
+        run: fish --version
+      - name: Install Fisher > Fishtape > Pure
+        run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
+        shell: fish {0}
+      - name: Test Pure
+        run: fishtape tests/*.test.fish
+        shell: fish {0}
