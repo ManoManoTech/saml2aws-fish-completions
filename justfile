@@ -7,3 +7,6 @@ set shell := ["fish", "-c"]
 
 test-auto-completion: dev-reinstall
     complete --do-complete "saml2aws exec -" 
+
+test:
+    fishtape tests/*
