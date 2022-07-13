@@ -5,7 +5,7 @@ set --local subcommands \
     login \
     exec \
     console \
-    roles \
+    list-roles \
     script
 
 # don't suggest files right off
