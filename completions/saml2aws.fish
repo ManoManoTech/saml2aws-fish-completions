@@ -37,7 +37,21 @@ complete --command saml2aws --long-option prompter=PROMPTER --require-parameter 
 
 # Commands:
 complete -c saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments "$subcommands"
+
+# Subcommand: configure
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --description "Configure a new IDP account."
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option app-id=APP-ID --description "OneLogin app id required for SAML assertion. (env: ONELOGIN_APP_ID)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option client-id=CLIENT-ID --description "OneLogin client id, used to generate API access token. (env: ONELOGIN_CLIENT_ID)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option client-secret=CLIENT-SECRET --description "OneLogin client secret, used to generate API access token. (env: ONELOGIN_CLIENT_SECRET)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option subdomain=SUBDOMAIN --description "OneLogin subdomain of your company account. (env: ONELOGIN_SUBDOMAIN)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option profile=PROFILE --short-option p --description "The AWS profile to save the temporary credentials. (env: SAML2AWS_PROFILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option resource-id=RESOURCE-ID --description "F5APM SAML resource ID of your company account. (env: SAML2AWS_F5APM_RESOURCE_ID)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option credentials-file=CREDENTIALS-FILE --description "The file that will cache the credentials retrieved from AWS. When not specified, will use the default AWS credentials file location. (env: SAML2AWS_CREDENTIALS_FILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --long-option cache-saml --description "Caches the SAML response (env: SAML2AWS_CACHE_SAML)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option cache-file=CACHE-FILE --description "The location of the SAML cache file (env: SAML2AWS_SAML_CACHE_FILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --long-option disable-sessions --description "Do not use Okta sessions. Uses Okta sessions by default. (env: SAML2AWS_OKTA_DISABLE_SESSIONS)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --long-option disable-remember-device --description "Do not remember Okta MFA device. Remembers MFA device by default. (env: SAML2AWS_OKTA_DISABLE_REMEMBER_DEVICE)"
+
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --description "Console will open the aws console after logging in."
 complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --arguments "$subcommands" --description "Exec the supplied command with env vars from STS token."
 complete --command saml2aws --condition "__fish_seen_subcommand_from help" --arguments "$subcommands" --description "Show help."
