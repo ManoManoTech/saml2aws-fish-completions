@@ -59,8 +59,12 @@ complete --command saml2aws --condition "__fish_seen_subcommand_from console" --
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --long-option force --description "Refresh credentials even if not expired."
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --long-option link --description "Present link to AWS console instead of opening browser"
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --require-parameter --long-option credentials-file=CREDENTIALS-FILE --description "The file that will cache the credentials retrieved from AWS. When not specified, will use the default AWS credentials file location. (env: SAML2AWS_CREDENTIALS_FILE)"
+
 # Subcommand: exec
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments exec --description "Exec the supplied command with env vars from STS token."
+complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --require-parameter --long-option profile=PROFILE --short-option p --description "The AWS profile to save the temporary credentials. (env: SAML2AWS_PROFILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --require-parameter --long-option exec-profile=EXEC-PROFILE --description "The AWS profile to utilize for command execution. Useful to allow the aws cli to perform secondary role assumption. (env: SAML2AWS_EXEC_PROFILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --require-parameter --long-option credentials-file=CREDENTIALS-FILE --description "The file that will cache the credentials retrieved from AWS. When not specified, will use the default AWS credentials file location. (env: SAML2AWS_CREDENTIALS_FILE)"
 
 # Subcommand: help
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments help --description "Show help."
