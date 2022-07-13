@@ -39,7 +39,7 @@ complete --command saml2aws --long-option prompter=PROMPTER --require-parameter 
 complete -c saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments "$subcommands"
 
 # Subcommand: configure
-complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --description "Configure a new IDP account."
+complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments configure --description "Configure a new IDP account."
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option app-id=APP-ID --description "OneLogin app id required for SAML assertion. (env: ONELOGIN_APP_ID)"
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option client-id=CLIENT-ID --description "OneLogin client id, used to generate API access token. (env: ONELOGIN_CLIENT_ID)"
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option client-secret=CLIENT-SECRET --description "OneLogin client secret, used to generate API access token. (env: ONELOGIN_CLIENT_SECRET)"
@@ -53,14 +53,23 @@ complete --command saml2aws --condition "__fish_seen_subcommand_from configure" 
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --long-option disable-remember-device --description "Do not remember Okta MFA device. Remembers MFA device by default. (env: SAML2AWS_OKTA_DISABLE_REMEMBER_DEVICE)"
 
 # Subcommand: console
-complete --command saml2aws --condition "__fish_seen_subcommand_from console" --description "Console will open the aws console after logging in."
+complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments console --description "Console will open the aws console after logging in."
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --require-parameter --long-option exec-profile=EXEC-PROFILE --description "The AWS profile to utilize for console execution. (env: SAML2AWS_EXEC_PROFILE)"
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --require-parameter --long-option profile=PROFILE --short-option p --description "The AWS profile to save the temporary credentials. (env: SAML2AWS_PROFILE)"
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --long-option force --description "Refresh credentials even if not expired."
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --long-option link --description "Present link to AWS console instead of opening browser"
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --require-parameter --long-option credentials-file=CREDENTIALS-FILE --description "The file that will cache the credentials retrieved from AWS. When not specified, will use the default AWS credentials file location. (env: SAML2AWS_CREDENTIALS_FILE)"
-complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --arguments "$subcommands" --description "Exec the supplied command with env vars from STS token."
-complete --command saml2aws --condition "__fish_seen_subcommand_from help" --arguments "$subcommands" --description "Show help."
-complete --command saml2aws --condition "__fish_seen_subcommand_from list-roles" --description "List available role ARNs."
-complete --command saml2aws --condition "__fish_seen_subcommand_from login" --description "Login to a SAML 2.0 IDP and convert the SAML assertion to an STS token."
-complete --command saml2aws --condition "__fish_seen_subcommand_from script" --description "Emit a script that will export environment variables."
+# Subcommand: exec
+complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments exec --description "Exec the supplied command with env vars from STS token."
+
+# Subcommand: help
+complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments help --description "Show help."
+
+# Subcommand: list-roles
+complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments list-roles --description "List available role ARNs."
+
+# Subcommand: login
+complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments login --description "Login to a SAML 2.0 IDP and convert the SAML assertion to an STS token."
+
+# Subcommand: script
+complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments script --description "Emit a script that will export environment variables."
