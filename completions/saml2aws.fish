@@ -71,6 +71,8 @@ complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcom
 
 # Subcommand: list-roles
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments list-roles --description "List available role ARNs."
+complete --command saml2aws --condition "__fish_seen_subcommand_from list-roles" --long-option cache-saml --description "Caches the SAML response (env: SAML2AWS_CACHE_SAML)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from list-roles" --require-parameter --long-option cache-file=CACHE-FILE --description "The location of the SAML cache file (env: SAML2AWS_SAML_CACHE_FILE)"
 
 # Subcommand: login
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments login --description "Login to a SAML 2.0 IDP and convert the SAML assertion to an STS token."
