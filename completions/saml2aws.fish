@@ -87,3 +87,6 @@ complete --command saml2aws --condition "__fish_seen_subcommand_from login" --lo
 
 # Subcommand: script
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments script --description "Emit a script that will export environment variables."
+complete --command saml2aws --condition "__fish_seen_subcommand_from script" --require-parameter --long-option profile=PROFILE --short-option p --description "The AWS profile to save the temporary credentials. (env: SAML2AWS_PROFILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from script" --require-parameter --long-option credentials-file=CREDENTIALS-FILE --description "The file that will cache the credentials retrieved from AWS. When not specified, will use the default AWS credentials file location. (env: SAML2AWS_CREDENTIALS_FILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from script" --require-parameter --long-option shell=bash --description "Type of shell environment. Options include: bash, powershell, fish, env"
