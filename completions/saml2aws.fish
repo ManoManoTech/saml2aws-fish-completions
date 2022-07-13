@@ -76,6 +76,17 @@ complete --command saml2aws --condition "__fish_seen_subcommand_from list-roles"
 
 # Subcommand: login
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments login --description "Login to a SAML 2.0 IDP and convert the SAML assertion to an STS token."
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --require-parameter --long-option profile=PROFILE --short-option p --description "The AWS profile to save the temporary credentials. (env: SAML2AWS_PROFILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --require-parameter --long-option duo-mfa-option=DUO-MFA-OPTION --description "The MFA option you want to use to authenticate with"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --require-parameter --long-option client-id=CLIENT-ID --description "OneLogin client id, used to generate API access token. (env: ONELOGIN_CLIENT_ID)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --require-parameter --long-option client-secret=CLIENT-SECRET --description "OneLogin client secret, used to generate API access token. (env: ONELOGIN_CLIENT_SECRET)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --long-option force --description "Refresh credentials even if not expired."
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --require-parameter --long-option credential-process --description "Enables AWS Credential Process support by outputting credentials to STDOUT in a JSON message."
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --require-parameter --long-option credentials-file=CREDENTIALS-FILE --description "The file that will cache the credentials retrieved from AWS. When not specified, will use the default AWS credentials file location. (env: SAML2AWS_CREDENTIALS_FILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --long-option cache-saml --description "Caches the SAML response (env: SAML2AWS_CACHE_SAML)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --require-parameter --long-option cache-file=CACHE-FILE --description "The location of the SAML cache file (env: SAML2AWS_SAML_CACHE_FILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --long-option disable-sessions --description "Do not use Okta sessions. Uses Okta sessions by default. (env: SAML2AWS_OKTA_DISABLE_SESSIONS)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --long-option disable-remember-device --description "Do not remember Okta MFA device. Remembers MFA device by default. (env: SAML2AWS_OKTA_DISABLE_REMEMBER_DEVICE)"
 
 # Subcommand: script
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments script --description "Emit a script that will export environment variables."
