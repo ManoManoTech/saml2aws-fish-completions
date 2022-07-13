@@ -37,10 +37,10 @@ complete --command saml2aws --long-option prompter=PROMPTER --require-parameter 
 
 # Commands:
 complete -c saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments "$subcommands"
-complete --command saml2aws --condition "__fish_seen_subcommand_from help" --arguments "$subcommands" --description "Show help."
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --description "Configure a new IDP account."
-complete --command saml2aws --condition "__fish_seen_subcommand_from login" --description "Login to a SAML 2.0 IDP and convert the SAML assertion to an STS token."
-complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --arguments "$subcommands" --description "Exec the supplied command with env vars from STS token."
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --description "Console will open the aws console after logging in."
+complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --arguments "$subcommands" --description "Exec the supplied command with env vars from STS token."
+complete --command saml2aws --condition "__fish_seen_subcommand_from help" --arguments "$subcommands" --description "Show help."
 complete --command saml2aws --condition "__fish_seen_subcommand_from list-roles" --description "List available role ARNs."
+complete --command saml2aws --condition "__fish_seen_subcommand_from login" --description "Login to a SAML 2.0 IDP and convert the SAML assertion to an STS token."
 complete --command saml2aws --condition "__fish_seen_subcommand_from script" --description "Emit a script that will export environment variables."
