@@ -35,9 +35,6 @@ complete --command saml2aws --long-option disable-keychain --description "Do not
 complete --command saml2aws --long-option region=REGION --short-option r --require-parameter --description "AWS region to use for API requests, e.g. us-east-1, us-gov-west-1, cn-north-1 (env: SAML2AWS_REGION)"
 complete --command saml2aws --long-option prompter=PROMPTER --require-parameter --description "The prompter to use for user input (default, pinentry)"
 
-# Commands:
-complete -c saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments "$subcommands"
-
 # Subcommand: configure
 complete --command saml2aws --condition "not __fish_seen_subcommand_from $subcommands" --arguments configure --description "Configure a new IDP account."
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --require-parameter --long-option app-id=APP-ID --description "OneLogin app id required for SAML assertion. (env: ONELOGIN_APP_ID)"
