@@ -52,7 +52,13 @@ complete --command saml2aws --condition "__fish_seen_subcommand_from configure" 
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --long-option disable-sessions --description "Do not use Okta sessions. Uses Okta sessions by default. (env: SAML2AWS_OKTA_DISABLE_SESSIONS)"
 complete --command saml2aws --condition "__fish_seen_subcommand_from configure" --long-option disable-remember-device --description "Do not remember Okta MFA device. Remembers MFA device by default. (env: SAML2AWS_OKTA_DISABLE_REMEMBER_DEVICE)"
 
+# Subcommand: console
 complete --command saml2aws --condition "__fish_seen_subcommand_from console" --description "Console will open the aws console after logging in."
+complete --command saml2aws --condition "__fish_seen_subcommand_from console" --require-parameter --long-option exec-profile=EXEC-PROFILE --description "The AWS profile to utilize for console execution. (env: SAML2AWS_EXEC_PROFILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from console" --require-parameter --long-option profile=PROFILE --short-option p --description "The AWS profile to save the temporary credentials. (env: SAML2AWS_PROFILE)"
+complete --command saml2aws --condition "__fish_seen_subcommand_from console" --long-option force --description "Refresh credentials even if not expired."
+complete --command saml2aws --condition "__fish_seen_subcommand_from console" --long-option link --description "Present link to AWS console instead of opening browser"
+complete --command saml2aws --condition "__fish_seen_subcommand_from console" --require-parameter --long-option credentials-file=CREDENTIALS-FILE --description "The file that will cache the credentials retrieved from AWS. When not specified, will use the default AWS credentials file location. (env: SAML2AWS_CREDENTIALS_FILE)"
 complete --command saml2aws --condition "__fish_seen_subcommand_from exec" --arguments "$subcommands" --description "Exec the supplied command with env vars from STS token."
 complete --command saml2aws --condition "__fish_seen_subcommand_from help" --arguments "$subcommands" --description "Show help."
 complete --command saml2aws --condition "__fish_seen_subcommand_from list-roles" --description "List available role ARNs."
