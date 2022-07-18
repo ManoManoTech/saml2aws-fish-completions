@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Fish
-        run: apt install fish
+        run: sudo apt install fish
       - name: Print Fish version
         run: fish --version
       - name: Install Fisher > Fishtape > Pure
