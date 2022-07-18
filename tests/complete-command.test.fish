@@ -3,6 +3,38 @@ set number_of_subcommands 7
         complete --do-complete "saml2aws " | wc -l
 ) = $number_of_subcommands
 
+set is_present 1
+
+@test "should provides `help` subcommand as suggestion" (
+        complete --do-complete "saml2aws " | grep --count --regexp '^help'
+) = $is_present
+
+@test "should provides `configure` subcommand as suggestion" (
+        complete --do-complete "saml2aws " | grep --count --regexp '^configure'
+) = $is_present
+
+@test "should provides `login` subcommand as suggestion" (
+        complete --do-complete "saml2aws " | grep --count --regexp '^login'
+) = $is_present
+
+@test "should provides `exec` subcommand as suggestion" (
+        complete --do-complete "saml2aws " | grep --count --regexp '^exec'
+) = $is_present
+
+@test "should provides `console` subcommand as suggestion" (
+        complete --do-complete "saml2aws " | grep --count --regexp '^console'
+) = $is_present
+
+@test "should provides `list-roles` subcommand as suggestion" (
+        complete --do-complete "saml2aws " | grep --count --regexp '^list-roles'
+) = $is_present
+
+@test "should provides `script` subcommand as suggestion" (
+        complete --do-complete "saml2aws " | grep --count --regexp '^script'
+) = $is_present
+
+
+
 set number_of_core_options 21
 @test "should provides correct number of options from `saml2aws`" (
         complete --do-complete "saml2aws --" | wc -l
