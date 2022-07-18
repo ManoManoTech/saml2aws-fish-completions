@@ -23,8 +23,13 @@ jobs:
           sudo apt install fish
       - name: Print Fish version
         run: fish --version
-      - name: Install Fisher > Fishtape > Pure
-        run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
+      - name: Install Fisher && Fishtape && Project
+        run: |
+          curl -sL https://git.io/fisher | source
+          fisher install \
+            jorgebucaran/fisher \
+            jorgebucaran/fishtape \
+            ./
         shell: fish {0}
       - name: Install Saml2aws
         run: |
@@ -32,6 +37,6 @@ jobs:
           mkdir -p ~/.local/bin
           wget -c https://github.com/Versent/saml2aws/releases/download/v${CURRENT_VERSION}/saml2aws_${CURRENT_VERSION}_linux_amd64.tar.gz -O - | tar -xzv -C ~/.local/bin
           chmod u+x ~/.local/bin/saml2aws
-      - name: Test Pure
+      - name: Test Project
         run: fishtape tests/*.test.fish
         shell: fish {0}
