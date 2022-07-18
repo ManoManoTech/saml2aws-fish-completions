@@ -20,5 +20,5 @@ saml2aws <Tab>
 
 > MIT
 
-[github-ci-link]: <https://github.com/ManoManoTech/saml2aws-fish-completionsactions> "Github CI"
+[github-ci-link]: <https://github.com/ManoManoTech/saml2aws-fish-completions/actions> "Github CI"
 [github-ci-badge]: <https://github.com/ManoManoTech/saml2aws-fish-completions/actions/workflows/.ci.yml/badge.svg>
