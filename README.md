@@ -6,9 +6,15 @@
 
 ## Installation
 
-    fisher install ManoManoTech/saml2aws-fish-completions
+```fish
+fisher install ManoManoTech/saml2aws-fish-completions
+```
 
-:warning: Subcommand only expose global options, specific options need to be added (help welcome :)
+## Usage
+
+```fish
+saml2aws <Tab>
+```
 
 ## License
 
