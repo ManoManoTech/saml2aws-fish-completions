@@ -1,4 +1,4 @@
-# saml2aws-fish-completions
+# saml2aws-fish-completions [![github-ci-badge]][github-ci-link]
 
 > Provides basic Fish completion for saml2aws
 
@@ -19,3 +19,6 @@ saml2aws <Tab>
 ## License
 
 > MIT
+
+[github-ci-link]: <https://github.com/ManoManoTech/saml2aws-fish-completionsactions> "Github CI"
+[github-ci-badge]: <https://github.com/ManoManoTech/saml2aws-fish-completions/actions/workflows/.ci.yml/badge.svg>
