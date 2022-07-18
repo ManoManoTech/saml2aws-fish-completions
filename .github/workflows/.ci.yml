@@ -37,7 +37,7 @@ jobs:
           mkdir -p ~/.local/bin
           wget -c https://github.com/Versent/saml2aws/releases/download/v${CURRENT_VERSION}/saml2aws_${CURRENT_VERSION}_linux_amd64.tar.gz -O - | tar -xzv -C ~/.local/bin
           chmod u+x ~/.local/bin/saml2aws
-      - name: Print saml2aws
+      - name: Print saml2aws version
         run: saml2aws --version
       - name: Test Project
         run: fishtape tests/*.test.fish

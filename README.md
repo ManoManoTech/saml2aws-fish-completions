@@ -18,9 +18,10 @@ saml2aws <Tab>
 
 ## Credit
 
-<div style="max-width: 40%">
-  
-  [![Online DIY, home improvement and gardening products][logo]][manomano-website]
+<a href="manomano.com">
+    <img src="https://raw.githubusercontent.com/ManoManoTech/visual-assets/main/logo/logo-ManoMano-horizontal-RGB-hor-color-positif.svg" width="25%" height="25%" alt="Online DIY, home improvement and gardening products">
+</a>
+
 </div>
 
 ## License
