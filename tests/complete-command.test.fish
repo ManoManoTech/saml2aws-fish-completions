@@ -6,31 +6,31 @@ set number_of_subcommands 7
 set is_present 1
 
 @test "should provides `help` subcommand as suggestion" (
-        complete --do-complete "saml2aws " | grep --count --regexp '^help'
+        complete --do-complete "saml2aws " | grep -c -E '^help'
 ) = $is_present
 
 @test "should provides `configure` subcommand as suggestion" (
-        complete --do-complete "saml2aws " | grep --count --regexp '^configure'
+        complete --do-complete "saml2aws " | grep -c -E '^configure'
 ) = $is_present
 
 @test "should provides `login` subcommand as suggestion" (
-        complete --do-complete "saml2aws " | grep --count --regexp '^login'
+        complete --do-complete "saml2aws " | grep -c -E '^login'
 ) = $is_present
 
 @test "should provides `exec` subcommand as suggestion" (
-        complete --do-complete "saml2aws " | grep --count --regexp '^exec'
+        complete --do-complete "saml2aws " | grep -c -E '^exec'
 ) = $is_present
 
 @test "should provides `console` subcommand as suggestion" (
-        complete --do-complete "saml2aws " | grep --count --regexp '^console'
+        complete --do-complete "saml2aws " | grep -c -E '^console'
 ) = $is_present
 
 @test "should provides `list-roles` subcommand as suggestion" (
-        complete --do-complete "saml2aws " | grep --count --regexp '^list-roles'
+        complete --do-complete "saml2aws " | grep -c -E '^list-roles'
 ) = $is_present
 
 @test "should provides `script` subcommand as suggestion" (
-        complete --do-complete "saml2aws " | grep --count --regexp '^script'
+        complete --do-complete "saml2aws " | grep -c -E '^script'
 ) = $is_present
 
 

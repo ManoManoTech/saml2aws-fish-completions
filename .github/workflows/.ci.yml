@@ -21,6 +21,8 @@ jobs:
           sudo apt-add-repository ppa:fish-shell/release-3
           sudo apt update
           sudo apt install fish
+      - name: Install Just command runner
+        run: sudo snap install --edge --classic just
       - name: Print Fish version
         run: fish --version
       - name: Install Fisher && Fishtape && Project
@@ -39,6 +41,26 @@ jobs:
           chmod u+x ~/.local/bin/saml2aws
       - name: Print saml2aws version
         run: saml2aws --version
-      - name: Test Project
-        run: fishtape tests/*.test.fish
-        shell: fish {0}
+      - name: Test project
+        run: just test-without-container
+
+  test-inside-container:
+    name: Test on fish ${{ matrix.fish_version }} on Docker
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fish_version:
+          - '3.1.2'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Fish
+        run: |
+          sudo apt-add-repository ppa:fish-shell/release-3
+          sudo apt update
+          sudo apt install fish
+      - name: Install Just command runner
+        run: sudo snap install --edge --classic just
+      - name: Build image
+        run: just FISH_VERSION=3.1.2 build-project-on
+      - name: Test project
+        run: just FISH_VERSION=3.1.2 test-project-on
