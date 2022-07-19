@@ -62,7 +62,5 @@ jobs:
         run: sudo snap install --edge --classic just
       - name: Build image
         run: just FISH_VERSION=3.1.2 build-project-on
-      - name: Print saml2aws version
-        run: just FISH_VERSION=3.1.2 CMD="saml2aws --version" dev-project-on
       - name: Test project
         run: just FISH_VERSION=3.1.2 test-project-on

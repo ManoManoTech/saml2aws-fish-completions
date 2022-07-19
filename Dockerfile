@@ -21,7 +21,6 @@ RUN mkdir -p "/usr/local/bin/" \
     && CURRENT_VERSION=$(curl -Ls https://api.github.com/repos/Versent/saml2aws/releases/latest | grep 'tag_name' | cut -d'v' -f2 | cut -d'"' -f1) \
     && curl -Ls https://github.com/Versent/saml2aws/releases/download/v${CURRENT_VERSION}/saml2aws_${CURRENT_VERSION}_linux_amd64.tar.gz | tar -xzv -C /usr/local/bin \
     && chmod u+x /usr/local/bin/saml2aws 
-
 USER nemo
 
 # Copy source code
@@ -29,6 +28,7 @@ COPY --chown=nemo:nemo . /tmp/app/
 WORKDIR /tmp/app/
 SHELL ["/usr/local/bin/fish", "-c"]
 RUN fisher install /tmp/app
+RUN printf "\nUsing \e[38;5;27msaml2aws %s\e[m\n\n" (saml2aws --version &| string join0)
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]
