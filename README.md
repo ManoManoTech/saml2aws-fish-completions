@@ -1,6 +1,6 @@
 # saml2aws-fish-completions [![github-ci-badge]][github-ci-link]
 
-> Provides basic Fish completion for saml2aws
+> Provides full completion support for `saml2aws` in `Fish`
 
 ![preview](preview.gif)
 
