@@ -1,6 +1,5 @@
 set shell := ["fish", "-c"]
-# new Fish docker image version wait for: https://github.com/andreiborisov/docker-fish/pull/22
-FISH_VERSION := "3.1.2" 
+FISH_VERSION := "3.5.1" 
 
 usage:
     @printf "usage:"
@@ -20,30 +19,30 @@ test-without-container:
     fishtape tests/*
 
 
-build-project-on:
+build-project-on fish_version=FISH_VERSION:
     docker build \
         --file ./Dockerfile \
-        --build-arg FISH_VERSION={{FISH_VERSION}} \
-        --tag=project-on-fish-{{FISH_VERSION}} \
+        --build-arg FISH_VERSION={{fish_version}} \
+        --tag=project-on-fish-{{fish_version}} \
         ./
 
 # can be overriden by user
 CMD := "fish"
-dev-project-on:
+dev-project-on fish_version=FISH_VERSION:
     docker run \
-        --name run-project-on-{{FISH_VERSION}} \
+        --name run-project-on-{{fish_version}} \
         --rm \
         --interactive \
         --tty \
         --volume=(pwd):/tmp/app/ \
-        project-on-fish-{{FISH_VERSION}} "{{CMD}}"
+        project-on-fish-{{fish_version}} "{{CMD}}"
 
 # can be overriden by user
 TEST := "fishtape tests/*.test.fish "
 # Don't override COPY directive as `--volume` doesnt play nice with Travis
-test-project-on:
+test-project-on fish_version=FISH_VERSION:
     docker run \
-        --name run-project-on-{{FISH_VERSION}} \
+        --name run-project-on-{{fish_version}} \
         --rm \
         --tty \
-        project-on-fish-{{FISH_VERSION}} "{{TEST}}"
+        project-on-fish-{{fish_version}} "{{TEST}}"
