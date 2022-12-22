@@ -1,7 +1,7 @@
 # Specify fish version to use during build
 # docker build -t <image> --build-arg FISH_VERSION=<version>
 ARG FISH_VERSION
-FROM andreiborisov/fish:${FISH_VERSION}
+FROM purefish/docker-fish:${FISH_VERSION}
 
 # Redeclare ARG so its value is available after FROM (cf. https://github.com/moby/moby/issues/34129#issuecomment-417609075)
 ARG FISH_VERSION
@@ -26,9 +26,10 @@ USER nemo
 # Copy source code
 COPY --chown=nemo:nemo . /tmp/app/
 WORKDIR /tmp/app/
-SHELL ["/usr/local/bin/fish", "-c"]
-RUN fisher install /tmp/app
-RUN printf "\nUsing \e[38;5;27msaml2aws %s\e[m\n\n" (saml2aws --version &| string join0)
+
+SHELL ["/usr/bin/fish", "-c"]
+RUN fisher install /tmp/app \
+    && printf "\nUsing \e[38;5;27msaml2aws %s\e[m\n\n" (saml2aws --version &| string join0)
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]
